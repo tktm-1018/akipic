@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tktm-1018.github.io/akipic/sitemap.xml
