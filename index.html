@@ -84,6 +84,8 @@
   }
   @media (min-width:961px){ :root{ --head-h:84px } }
 
+  /* ページ端で画面がゴムのように伸びる動き（オーバースクロール）を止め、伸びた場合も上端はバーと同じ色に */
+  html{ background:var(--bdx-900); overscroll-behavior-y:none }
   html{ -webkit-text-size-adjust:100%; overflow-x:hidden; scroll-behavior:smooth;
         scroll-padding-top:calc(var(--head-h) + 12px); scroll-padding-bottom:var(--cta-h) }
   @supports (overflow:clip){ html{ overflow-x:clip } }
@@ -663,7 +665,7 @@
 
 <header class="site-head">
   <div class="site-head__inner">
-    <a class="brand" href="#top"><img class="brand__logo" src="agricamp-logo.png" alt="AgriCamp" width="60" height="60"></a>
+    <a class="brand" href="#top"><b>AgriCamp</b><small>地域の魅力を、イベントで届ける</small></a>
     <nav class="nav" id="nav" aria-label="ページ内">
       <a href="#about"><span class="en">ABOUT</span><small>この夜について</small></a>
       <a href="#timeline"><span class="en">TIMELINE</span><small>当日の流れ</small></a>
