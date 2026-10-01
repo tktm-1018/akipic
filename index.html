@@ -557,6 +557,7 @@
   @media (min-width:900px){ .reserve__grid{ grid-template-columns:minmax(0,1fr) minmax(0,25rem) } }
   .reserve p{ color:#e6dccb }
   .reserve .note{ color:var(--moon-sub) }
+  .apply-btn{ margin:1.2rem 0 .6rem }
   .soon{ display:inline-flex; align-items:center; gap:.7rem; min-height:56px; margin:1rem 0 .6rem; padding:.9rem 2rem; border-radius:999px;
     border:1px dashed rgba(220,187,116,.6); color:var(--gold-pale); font-size:.95rem; letter-spacing:.1em }
   .remind{ display:inline-flex; align-items:center; gap:.5rem; min-height:44px; color:var(--gold-lt); text-decoration:none;
@@ -1130,9 +1131,9 @@
     <div class="reserve__grid">
       <div class="blur-fade">
         <p>事前予約制です。予約は CAMPFIRE で受け付けます。<br>受付は10月初旬に始まる予定です。</p>
-        <!-- 受付が始まったら、下の span を次に置き換える：
-             <a class="btn btn--gold" href="（CAMPFIRE の URL）">CAMPFIRE で予約する</a> -->
-        <span class="soon" aria-disabled="true">10月初旬 受付開始予定</span>
+        <!-- 本公開されたら、下の href を CAMPFIRE の公開URLに差し替える（いまはトークン付きのプレビューURL） -->
+        <p class="apply-btn"><a class="btn btn--gold" href="https://camp-fire.jp/projects/984580/preview?token=1rk659oc&amp;utm_campaign=cp_po_share_c_msg_projects_show" target="_blank" rel="noopener nofollow">CAMPFIRE のページを見る</a></p>
+        <p class="note">公開準備中のページです（限定公開のリンク）。受付開始は10月初旬の予定です。</p>
         <p><a class="remind" href="mailto:agricamp10@gmail.com?subject=%E3%81%82%E3%81%8D%E3%83%94%E3%82%AF%20%E5%8F%97%E4%BB%98%E9%96%8B%E5%A7%8B%E3%81%AE%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B%E5%B8%8C%E6%9C%9B">受付開始のお知らせを受け取る</a><br>
           <span class="note">メールを1通送るだけです。受付が始まったらご連絡します</span></p>
         <div class="contact">
