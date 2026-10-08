@@ -162,6 +162,13 @@
     transition:transform .2s var(--ease), box-shadow .2s ease }
   .nav__cta:hover{ transform:translateY(-1px); box-shadow:0 10px 26px -8px rgba(220,187,116,.85) }
   .head-cta{ display:none }
+  /* 言語切り替え */
+  .lang{ display:inline-flex; align-items:center; margin:0; border:1px solid rgba(220,187,116,.45); border-radius:999px; overflow:hidden }
+  .lang a{ white-space:nowrap; padding:.35rem .8rem; font-family:var(--serif-en); font-size:.75rem; font-weight:600; letter-spacing:.1em;
+    color:var(--moon-sub); text-decoration:none; transition:background-color .2s, color .2s }
+  .lang a[aria-current="true"]{ background:rgba(220,187,116,.9); color:var(--navy-900) }
+  .lang a:not([aria-current="true"]):hover{ color:var(--gold-lt) }
+  @media (max-width:960px){ .lang{ order:-1; margin-left:auto; margin-right:.6rem } .lang a{ padding:.3rem .6rem; font-size:.7rem } }
   .nav-toggle{ display:none; position:relative; z-index:2; width:48px; height:48px; padding:0; border:0;
     background:none; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:.3rem; color:var(--moon) }
   .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{ content:""; position:absolute;
@@ -715,6 +722,7 @@
       <a href="#faq"><span class="en">FAQ</span><small>よくある質問</small></a>
       <a class="nav__cta" href="#apply">ご予約の案内</a>
     </nav>
+    <p class="lang" aria-label="Language"><a href="?lang=ja" data-lang="ja" hreflang="ja">日本語</a><a href="?lang=en" data-lang="en" hreflang="en">English</a></p>
     <a class="head-cta" href="#apply">ご予約</a>
     <button class="nav-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="メニューを開く"><span></span><i aria-hidden="true">MENU</i></button>
   </div>
@@ -1176,6 +1184,250 @@
 
 
 
+<script>
+/* 言語切り替え：?lang=en で英語、?lang=ja で日本語。選んだ言語は次回も使う。
+   本文の文字を1文字ずつ出す演出より先に走らせる必要があるため、このブロックは他のスクリプトより前に置く。 */
+(() => {
+  "use strict";
+  const EN = {
+"本文へスキップ": "Skip to content",
+"ご予約の受付は、まもなく始まります（先着20組）": "Bookings open soon (first 20 groups)",
+"ご予約について": "About booking",
+"地域の魅力を、イベントで届ける": "Sharing local treasures through events",
+"この夜について": "the night",
+"当日の流れ": "on the day",
+"参加費": "Price",
+"アクセス": "getting there",
+"雨の日": "rain day",
+"よくある質問": "questions",
+"ご予約の案内": "Booking info",
+"ご予約": "Booking",
+"〜あきる野を愉しむ一夜のピクニック〜": "- a one-night picnic in Akiruno -",
+"芝生の上で、": "On the grass,\u00a0",
+"あきる野のワインと星を。": "Akiruno wine and a sky full of stars.",
+"都立秋留台公園 芝生広場（東京・あきる野）": "Akiruno Park Lawn Square (Akiruno, Tokyo)",
+"雨天順延 ── 予備日 11.15（日）": "Postponed if it rains - backup date Nov 15 (Sun)",
+"音楽は、流しません。": "We play no music.",
+"灯りは、": "The only light is ",
+"手元のランタンと、": "a lantern at your side ",
+"小さなフェアリーライトだけ。": "and a string of small fairy lights.",
+"11月14日": "November 14",
+"好きな時間に来て、好きな時間に帰る。": "Come when you like, leave when you like.",
+"進行も、集合の時刻もありません。": "There is no programme, and no meeting time.",
+"あきる野のワインを片手に、昼が夜に変わっていくのを眺める。": "With a glass of Akiruno wine, watch the day turn into night.",
+"星が見えなくても、成立する夜です。": "Even if no stars come out, the evening still works.",
+"開催概要": "Details",
+"日程": "Date",
+"（土）": " (Sat)",
+"雨のときは予備日 11月15日（日）に順延": "If it rains, postponed to the backup date, Sunday November 15",
+"時間": "Hours",
+"この時間内なら、来る時間・帰る時間は自由です": "Within these hours, you may arrive and leave whenever you like",
+"会場": "Venue",
+"都立秋留台公園 芝生広場": "Akiruno Park Lawn Square",
+"東京都あきる野市二宮673-1": "673-1 Ninomiya, Akiruno, Tokyo",
+"（1人）": " (per person)",
+"ピクニック用具の貸出、ワイン、軽食つき（内容は「参加費」をご覧ください）": "Includes picnic kit hire, wine and light food (see Price for the full list)",
+"定員": "Capacity",
+"先着20組": "First 20 groups",
+"（1組2〜4名）": " (2-4 people per group)",
+"事前予約制です。定員に達したあとでも、お問い合わせいただければ、運営で検討のうえご参加いただける場合があります": "Booking is required. Even once we are full, please get in touch - we may still be able to make room for you",
+"CAMPFIRE で受け付けます": "Through CAMPFIRE",
+"受付の開始は、このページでお知らせします": "We will announce the opening of bookings on this page",
+"主催": "Host",
+"進行も、集合の時刻もありません。3時間半のあいだに、夕方が夜へ変わっていきます。": "There is no programme and no meeting time. Over three and a half hours, evening turns into night.",
+"開場・空が色づきはじめる": "Doors open - the sky begins to change colour",
+"公園内で用具を受け取り、芝生の好きな場所へ。西の奥多摩の山が影になり、空の色が変わっていきます": "Collect your kit inside the park and choose any spot on the lawn. The Okutama mountains to the west turn to silhouettes as the sky changes",
+"日の入り": "Sunset",
+"この日、この場所の日没時刻です（暦の計算による）": "The sunset time for this date and place (astronomical calculation)",
+"いちばん暗く、いちばん星が見える": "The darkest hour, and the best for stars",
+"音楽はありません。ランタンとフェアリーライトの灯りだけで、空を見上げる時間です": "No music. Just lantern and fairy light, and time to look up",
+"終了": "Close",
+"用具を公園内でスタッフに返して解散。ゴミはスタッフが回収します": "Return your kit to our staff inside the park. We take care of the rubbish",
+"／1人": " / per person",
+"ピクニック用具の貸出、あきる野のワイン、軽食こみ": "Picnic kit hire, Akiruno wine and light food included",
+"ふくまれるもの": "What's included",
+"ピクニック用具": "Picnic kit",
+"1組にひとそろい": "one set per group",
+"レジャーシート": "Picnic blanket",
+"ピクニックバスケット": "Picnic basket",
+"木製ボード": "Wooden serving board",
+"LEDランタン": "LED lantern",
+"フェアリーライト": "Fairy lights",
+"電池式・火は使いません": "Battery powered - no open flame",
+"ワイングラス": "Wine glass",
+"飲みもの・軽食": "Drinks & food",
+"おひとりずつ": "one each",
+"あきる野のワイン": "Akiruno wine",
+"ヴィンヤード多摩": "Vineyard Tama",
+"1人2杯程度": "about 2 glasses each",
+"お酒が飲めない方には": "If you do not drink alcohol,",
+"ぶどうジュースをご用意します": "we have grape juice for you",
+"カンパーニュ": "Pain de campagne",
+"ウッディカフェ よっちゃんち": "Woody Cafe Yocchanchi",
+"トマトガーリックトースト": "Tomato garlic toast",
+"チーズ": "Cheese",
+"燻製屋いぶし庵": "Ibushian Smokehouse",
+"アレルゲン表示を見る": "See allergen information",
+"この表はまだ完成していません。": "This table is not complete yet.",
+"各店の公表資料にアレルゲン表示がないため、\n          いま分かっているものだけを載せています。残りは各店に確認中です。": "\u00a0None of the shops publish allergen information, so we list only what we can confirm. We are checking the rest with each shop.",
+"食物アレルギーをお持ちの方は、ご予約のときに必ずお知らせください。": "If you have a food allergy, please tell us when you book.",
+"品目": "Item",
+"お店": "Shop",
+"ふくまれるもの（分かっている分）": "Known to contain",
+"確認中": "Still checking",
+"よっちゃんち": "Yocchanchi",
+"小麦": "Wheat",
+"乳成分・卵・大豆など": "Milk, egg, soy and others",
+"燻製チーズ": "Smoked cheese",
+"乳成分": "Milk",
+"そのほかの原材料": "Other ingredients",
+"酸化防止剤（亜硫酸塩）の有無": "Whether sulphites are used",
+"ぶどうジュース": "Grape juice",
+"原材料ぜんぶ": "All ingredients",
+"※ 同じ調理場で、ほかの原材料を扱う場合があります。": "* The same kitchen may handle other ingredients.",
+"Googleマップで開く": "Open in Google Maps",
+"電車": "Train",
+"JR五日市線": "JR Itsukaichi Line",
+"秋川駅": "Akigawa Station",
+"東秋留駅": "Higashi-Akiru Station",
+"から徒歩約20分": " - about 20 minutes on foot",
+"バス": "Bus",
+"「東中学校入口」下車 徒歩2分": "Get off at Higashi-Chugakko-iriguchi, then 2 minutes on foot",
+"車": "Car",
+"電車かバスでお越しください": "Please come by train or bus",
+"公園の駐車場は夕方に閉まり、終了時には出庫できません。お酒もお出しするため、電車かバスでお越しください。お車の場合は、近隣の別の駐車場をご利用ください": "The park car park closes in the early evening, so you cannot drive out at the end of the evening. We also serve alcohol, so please come by train or bus. If you do drive, please use another car park nearby",
+"用具の受け取り": "Collecting your kit",
+"公園内の芝生広場で、スタッフがお渡しします": "Our staff hand it to you on the lawn inside the park",
+"当日の受け渡し場所は、ご予約の方に事前にご案内します。お帰りのときも、同じ場所にご返却ください": "We tell you the exact spot before the day once you have booked. Please return everything to the same place when you leave",
+"帰り道": "Getting home",
+"駅までの夜道は暗くなります": "The walk back to the station is dark at night",
+"道順は、ご予約の方に事前にご案内します。小さなライトがあると安心です": "We send directions to everyone who books. A small torch is reassuring",
+"雨の日のこと": "If it rains",
+"本番": "Main date",
+"降水確率が50％以上なら、前日18時までに順延をお知らせします": "If the chance of rain is 50% or more, we announce the postponement by 6pm the day before",
+"予備日": "Backup date",
+"11月14日が雨のとき。この日も雨なら中止し、全額をお返しします": "Used if November 14 is rained off. If this day is rained off too, we cancel and refund in full",
+"雨の判断": "How we decide",
+"判断のしかた": "The rule",
+"当日の降水確率が": "If the chance of rain on the day is ",
+"50％以上": "50% or more",
+"なら順延します": ", we postpone",
+"前日18時の気象庁の予報（あきる野市）で判断します": "We go by the Japan Meteorological Agency forecast for Akiruno at 6pm the day before",
+"曇りのとき": "If it is cloudy",
+"降水確率が50％未満なら開催します": "We go ahead if the chance of rain is under 50%",
+"星が見えにくい場合でも、返金の対象にはなりません": "Cloud that hides the stars is not grounds for a refund",
+"お知らせ": "How we tell you",
+"前日18時までにお知らせします": "By 6pm the day before",
+"このページの上部のお知らせバーと、ご予約の方には CAMPFIRE からもご連絡します": "On the news bar at the top of this page, and by message through CAMPFIRE if you have booked",
+"キャンセルと返金": "Cancellations and refunds",
+"両日とも雨": "Both dates rained off",
+"（中止）": " (cancelled)",
+"全額をお返しします": "We refund in full",
+"途中で中止": "Called off",
+"になったとき": " partway through",
+"バスケットをお渡しする前なら": "Before your basket is handed over, ",
+"全額": "the full amount",
+"、お渡ししたあとなら": "; after it is handed over, ",
+"2割": "20%",
+"をお返しします": " is refunded",
+"ご都合による": "Cancelled by you",
+"キャンセル": "",
+"返金はいたしません": "No refund",
+"順延日に": "Unable to come",
+"行けないとき": "on the backup date",
+"来る前に・会場でのお願い": "Before you come, and a few requests",
+"来る前に": "Before you come",
+"服装は、とにかく暖かく": "Dress as warmly as you can",
+"11月の夜の屋外です。日が落ちると一気に冷えます": "This is a November night outdoors. It gets cold quickly once the sun sets",
+"歩きやすい靴で": "Wear comfortable shoes",
+"駅から徒歩約20分、芝生の上で過ごします": "It is about 20 minutes from the station, and you will be on grass",
+"防寒具と小さなライトを": "Bring warm layers and a small torch",
+"シートとLEDランタンは貸し出します。持ってこなくてかまいません": "We lend you the blanket and the LED lantern, so there is no need to bring them",
+"会場でのお願い": "A few requests",
+"公園をご利用のほかの方や、近くにお住まいの方のための、静かな夜の約束です。": "A few promises that keep the evening quiet for other park users and the neighbours.",
+"火気は使えません": "No open flames",
+"灯りは貸し出すLEDランタンとフェアリーライト（電池式）です": "Light comes from the LED lantern and fairy lights we lend you (battery powered)",
+"スピーカー・楽器はご遠慮ください": "Please leave speakers and instruments at home",
+"音楽は流しません": "We play no music",
+"テント・タープは立てられません": "No tents or tarps",
+"シートを広げて過ごしてください": "Please just spread out your blanket",
+"ゴミは返却のときにお渡しください": "Hand us your rubbish when you return the kit",
+"スタッフが回収します": "Our staff take it away",
+"子どもと行けますか？": "Can I bring children?",
+"はい、お子さま連れでもお越しいただけます。20歳未満の方にはお酒をお出しできませんが、お子さまには、ぶどうジュースをご用意します。大人もお子さまも楽しい夜を過ごしていただけるよう、できるかぎりの準備をしてお待ちしています。": "Yes, children are welcome. We cannot serve alcohol to anyone under 20, but we have grape juice for them. We are preparing as best we can so that both grown-ups and children enjoy the evening.",
+"途中で帰れますか？": "Can I leave early?",
+"はい。16:30〜20:00 のあいだなら、いつ来て、いつ帰ってもかまいません。用具は公園内でスタッフに返してください。": "Yes. Between 16:30 and 20:00 you may arrive and leave whenever you like. Please return your kit to our staff inside the park.",
+"雨が降ったらどうなりますか？": "What happens if it rains?",
+"当日の降水確率が50％以上なら、11月15日（日）に順延します。前日18時の気象庁の予報（あきる野市）で判断し、同じ時刻までにこのページの上部とCAMPFIREでお知らせします。15日も雨のときは中止し、参加費は全額をお返しします。": "If the chance of rain on the day is 50% or more, we postpone to Sunday November 15. We decide from the Japan Meteorological Agency forecast for Akiruno at 6pm the day before, and tell you by that time at the top of this page and through CAMPFIRE. If the 15th is rained off too, we cancel and refund the fee in full.",
+"車で行けますか？": "Can I come by car?",
+"公園の駐車場は夕方に閉まり、終了時には出庫できません。お酒もお出しするため、電車かバスでお越しください。お車の場合は、近隣の別の駐車場をご利用ください。": "The park car park closes in the early evening, so you cannot drive out at the end. We also serve alcohol, so please come by train or bus. If you do drive, please use another car park nearby.",
+"曇りの日はどうなりますか？": "What if it is cloudy?",
+"降水確率が50％未満なら、曇りでも開催します。星が見えにくい場合でも、返金の対象にはなりません。音楽を流さない芝生で、ランタンとフェアリーライトの灯りだけで、ゆっくり過ごしていただく夜です。": "If the chance of rain is under 50% we go ahead, cloud or not. Cloud that hides the stars is not grounds for a refund. This is an evening to slow down on a lawn with no music, lit only by lanterns and fairy lights.",
+"途中で雨が降ったらどうなりますか？": "What if it starts raining during the evening?",
+"運営の判断で途中で中止することがあります。そのときは、軽食とワインのバスケットをお渡しする前であれば": "We may call the evening off partway through. If that happens, ",
+"を、お渡ししたあとであれば参加費の": " is refunded if your basket of food and wine has not yet been handed over; once it has, ",
+"をお返しします。": " of the fee is refunded.",
+"定員に達していたら、もう参加できませんか？": "What if you are already full?",
+"先着20組ですが、定員に達したあとでも、お問い合わせいただければ運営で検討のうえご連絡します。まずはメール（agricamp10@gmail.com）かInstagramからご相談ください。": "We take the first 20 groups, but even once we are full, please ask us - we will look into it and come back to you. Write to agricamp10@gmail.com or message us on Instagram.",
+"用具はどこで受け取りますか？": "Where do I collect the kit?",
+"公園内の芝生広場で、スタッフがお渡しします。当日の受け渡し場所は、ご予約の方に事前にご案内します。お帰りのときも同じ場所にご返却ください。": "Our staff hand it to you on the lawn inside the park. We tell everyone who books the exact spot before the day. Please return it to the same place when you leave.",
+"食べものや飲みものを持ち込めますか？": "Can I bring my own food and drink?",
+"はい、お持ち込みいただけます。お好きな食べものや飲みものと一緒に、ゆっくりお過ごしください。ゴミは用具の返却のときにお渡しください。": "Yes, please do. Bring whatever you like and take your time. Hand us your rubbish when you return the kit.",
+"お酒が飲めなくても楽しめますか？": "Is it still enjoyable if I do not drink?",
+"はい。お酒が飲めない方には、ぶどうジュースをご用意します。お車・バイク・自転車を運転される方にも、お酒はお出しできません。飲みものの持ち込みもできますので、星を見ながら思い思いに過ごしてください。": "Yes. We have grape juice for anyone who does not drink alcohol, and we cannot serve alcohol to anyone driving a car, riding a motorbike or cycling. You are also welcome to bring your own drinks and spend the evening however you like under the stars.",
+"この夜をひらく人": "Your host",
+"AgriCamp は、まだ十分に発信されていない各地の魅力を、イベントを通じて届ける取り組みです。あきる野にかぎらず、全国の土地の自然や食、そこで暮らす人の営みを、実際に訪れて体験できる場をつくっています。": "AgriCamp exists to share the parts of Japan that are not yet well known, through events. Not only Akiruno: we create places where you can go and experience the landscape, the food and the daily life of regions across the country.",
+"今回の舞台は、東京・あきる野。都心から電車で来られる距離に、広い空と地元のワインがある。その両方を、いちばん静かな時間に味わってほしくて、この夜を企画しました。": "This time the setting is Akiruno in Tokyo. Within reach of the city by train there is a wide open sky and wine made nearby. We planned this evening so that you can have both, at the quietest hour of the day.",
+"都立秋留台公園の許可を得て開催します。": "Held with the permission of Akiruno Park.",
+"事前予約制です。予約は CAMPFIRE で受け付けます。": "Booking is required, through CAMPFIRE.",
+"先着20組（1組2〜4名）。受付の開始は、このページの上部でお知らせします。": "The first 20 groups (2-4 people per group). We will announce the opening of bookings at the top of this page.",
+"受付開始までお待ちください": "Bookings not open yet",
+"お問い合わせ": "Contact",
+"数日以内にご返信します。Instagram": "We reply within a few days. You can also reach us on Instagram",
+"からもご連絡いただけます。": ".",
+"日付": "Date",
+"土": "Sat",
+"予備日 11.15": "Backup date Nov 15",
+"あきピク〜あきる野を愉しむ一夜のピクニック〜": "Akipic - a one-night picnic in Akiruno",
+"全国の、まだ知られていない魅力をイベントで届ける取り組み": "Sharing the lesser-known corners of Japan through events",
+"メールでお問い合わせ": "Email us",
+"© 2026 AgriCamp　／　このページの絵は、写真ではなくコードで描いています。": "© 2026 AgriCamp  /  The artwork on this page is drawn in code, not photographed."
+};
+  const TITLE_EN = "Akipic | A one-night picnic in Akiruno", DESC_EN = "Akipic - a one-night picnic in Akiruno. Akiruno wine and a sky full of stars, on the grass. Saturday 14 November 2026, 16:30-20:00, Akiruno Park Lawn Square, Tokyo. Hosted by AgriCamp.";
+  const qs = new URLSearchParams(location.search);
+  let lang = qs.get("lang");
+  try { if (!lang) lang = localStorage.getItem("akipic-lang"); } catch (e) {}
+  if (!lang && !qs.has("lang") && (navigator.language || "").slice(0, 2) !== "ja") lang = "en";
+  lang = lang === "en" ? "en" : "ja";
+  try { localStorage.setItem("akipic-lang", lang); } catch (e) {}
+  document.querySelectorAll(".lang a").forEach((a) => {
+    a.setAttribute("aria-current", String(a.dataset.lang === lang));
+  });
+  if (lang !== "en") return;
+  document.documentElement.lang = "en";
+  document.title = TITLE_EN;
+  const desc = document.querySelector('meta[name="description"]');
+  if (desc) desc.content = DESC_EN;
+  /* 英語では1文字ずつの演出を使わない（英単語が1字ずつ割れてしまうため） */
+  document.querySelectorAll("[data-text-reveal]").forEach((el) => el.removeAttribute("data-text-reveal"));
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(n) {
+      if (!n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const p = n.parentElement;
+      if (!p || p.closest("script, style, svg")) return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const nodes = [];
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) nodes.push(n);
+  nodes.forEach((n) => {
+    const t = n.nodeValue.trim();
+    const en = EN[t];
+    if (en === undefined) return;
+    n.nodeValue = n.nodeValue.replace(t, en);
+  });
+})();
+</script>
 <script>
 (() => {
   "use strict";
