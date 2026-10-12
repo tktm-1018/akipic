@@ -28,7 +28,7 @@
     "address":{"@type":"PostalAddress","streetAddress":"二宮673-1","addressLocality":"あきる野市","addressRegion":"東京都","postalCode":"197-0814","addressCountry":"JP"}},
   "maximumAttendeeCapacity":20,
   "organizer":{"@type":"Organization","name":"AgriCamp","email":"agricamp10@gmail.com"},
-  "offers":{"@type":"Offer","price":"4500","priceCurrency":"JPY","availability":"https://schema.org/PreOrder"}
+  "offers":{"@type":"AggregateOffer","lowPrice":"3800","highPrice":"4500","priceCurrency":"JPY","availability":"https://schema.org/PreOrder"}
 }
 </script>
 <!-- 順延したときの直し方：eventStatus を "https://schema.org/EventRescheduled" にし、
@@ -397,6 +397,16 @@
   .price-num span{ font-size:.5em; margin-right:.1em; color:var(--gold) }
   .price-num small{ font-family:var(--sans); font-weight:400; font-size:.9rem; letter-spacing:.1em; color:var(--ink-sub); margin-left:.4em }
   .price-card p:last-child{ margin:0 }
+  /* 料金表 */
+  .price-num em{ font-style:normal; margin:0 .12em; color:var(--gold) }
+  .fee{ width:100%; max-width:30rem; margin:clamp(24px,3vw,36px) auto 1.2rem; border-collapse:collapse; font-size:.95rem }
+  .fee th, .fee td{ padding:.7rem .6rem; border-bottom:1px solid var(--rule); text-align:right; font-variant-numeric:lining-nums }
+  .fee thead th{ font-family:var(--mincho); font-size:.8125rem; letter-spacing:.1em; color:var(--bdx); border-bottom-color:var(--gold) }
+  .fee thead th:first-child, .fee tbody th{ text-align:left }
+  .fee tbody th{ font-family:var(--mincho); font-weight:700; letter-spacing:.08em; color:var(--navy-900) }
+  .fee tbody td{ font-family:var(--serif-en); font-size:1.15rem; font-weight:600; color:var(--navy-900) }
+  .fee tbody tr:last-child th, .fee tbody tr:last-child td{ border-bottom:0 }
+  .price-card .note{ max-width:30rem; margin-inline:auto }
   .incl-ttl{ margin:clamp(40px,5vw,64px) 0 1.4rem; text-align:center; font-family:var(--mincho); font-size:1rem; letter-spacing:.2em; color:var(--navy-900) }
   /* 品数が変わっても中央にそろうように */
   .incl{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; justify-content:center;
@@ -892,7 +902,7 @@
         <dt>日程</dt><dd><b>2026.11.14</b>（土）<span class="note">雨のときは予備日 11月15日（日）に順延</span></dd>
         <dt>時間</dt><dd><b>16:30 – 20:00</b><span class="note">この時間内なら、来る時間・帰る時間は自由です</span></dd>
         <dt>会場</dt><dd>都立秋留台公園 芝生広場<span class="note">東京都あきる野市二宮673-1</span></dd>
-        <dt>参加費</dt><dd><b>¥4,500</b>（1人）<span class="note">ピクニック用具の貸出、ワイン、軽食つき（内容は「参加費」をご覧ください）</span></dd>
+        <dt>参加費</dt><dd><b>¥3,800〜4,500</b>（1人）<span class="note">組の人数と飲みもので変わります。ピクニック用具の貸出、飲みもの、軽食つき（内訳は「参加費」をご覧ください）</span></dd>
         <dt>定員</dt><dd><b>先着20組</b>（1組2〜4名）<span class="note">事前予約制です。定員に達したあとでも、お問い合わせいただければ、運営で検討のうえご参加いただける場合があります</span></dd>
         <dt>ご予約</dt><dd>CAMPFIRE で受け付けます<span class="note">受付の開始は、このページでお知らせします</span></dd>
         <dt>主催</dt><dd>AgriCamp</dd>
@@ -929,8 +939,18 @@
     </header>
     <div class="frame price-card blur-fade">
       <p class="price-card__label">参加費</p>
-      <p class="price-num"><span>¥</span>4,500<small>／1人</small></p>
-      <p class="note">ピクニック用具の貸出、あきる野のワイン、軽食こみ</p>
+      <p class="price-num"><span>¥</span>3,800<em>–</em>4,500<small>／1人</small></p>
+      <p class="note">ピクニック用具の貸出、飲みもの、軽食こみ</p>
+      <table class="fee">
+        <thead><tr><th>組の人数</th><th>ワイン</th><th>ぶどうジュース</th></tr></thead>
+        <tbody>
+          <tr><th>2名</th><td>¥4,500</td><td>¥4,200</td></tr>
+          <tr><th>3名</th><td>¥4,300</td><td>¥4,000</td></tr>
+          <tr><th>4名</th><td>¥4,100</td><td>¥3,800</td></tr>
+        </tbody>
+      </table>
+      <p class="note">金額はすべて1人あたりです。人数が多いほど、1人あたりは安くなります。ぶどうジュースを選ぶ方は、そこから300円引きです。</p>
+      <p class="note">たとえば4名の組で全員ワインなら、1組あわせて ¥16,400 です。</p>
     </div>
     <h3 class="incl-ttl blur-fade">ふくまれるもの</h3>
     <p class="incl-sub blur-fade">ピクニック用具<span>1組にひとそろい</span></p>
@@ -1151,7 +1171,7 @@
           <dt>日付</dt><dd><span class="en">2026.11.14</span> 土<br><span class="note">予備日 11.15</span></dd>
           <dt>時間</dt><dd><span class="en">16:30 – 20:00</span></dd>
           <dt>会場</dt><dd>都立秋留台公園 芝生広場</dd>
-          <dt>参加費</dt><dd><span class="en">¥4,500</span> ／1人</dd>
+          <dt>参加費</dt><dd><span class="en">¥3,800〜4,500</span> ／1人<br><span class="note">人数と飲みもので変わります</span></dd>
         </dl>
         <div class="ticket__perf" aria-hidden="true"></div>
         <p class="ticket__foot">ADMIT ONE ・ AKIRUNO</p>
@@ -1203,7 +1223,7 @@
 "ご予約の案内": "Booking info",
 "ご予約": "Booking",
 "〜あきる野を愉しむ一夜のピクニック〜": "- a one-night picnic in Akiruno -",
-"芝生の上で、": "On the grass,\u00a0",
+"芝生の上で、": "On the grass, ",
 "あきる野のワインと星を。": "Akiruno wine and a sky full of stars.",
 "都立秋留台公園 芝生広場（東京・あきる野）": "Akiruno Park Lawn Square (Akiruno, Tokyo)",
 "雨天順延 ── 予備日 11.15（日）": "Postponed if it rains - backup date Nov 15 (Sun)",
@@ -1269,7 +1289,7 @@
 "燻製屋いぶし庵": "Ibushian Smokehouse",
 "アレルゲン表示を見る": "See allergen information",
 "この表はまだ完成していません。": "This table is not complete yet.",
-"各店の公表資料にアレルゲン表示がないため、\n          いま分かっているものだけを載せています。残りは各店に確認中です。": "\u00a0None of the shops publish allergen information, so we list only what we can confirm. We are checking the rest with each shop.",
+"各店の公表資料にアレルゲン表示がないため、\n          いま分かっているものだけを載せています。残りは各店に確認中です。": " None of the shops publish allergen information, so we list only what we can confirm. We are checking the rest with each shop.",
 "食物アレルギーをお持ちの方は、ご予約のときに必ずお知らせください。": "If you have a food allergy, please tell us when you book.",
 "品目": "Item",
 "お店": "Shop",
@@ -1391,7 +1411,17 @@
 "あきピク〜あきる野を愉しむ一夜のピクニック〜": "Akipic - a one-night picnic in Akiruno",
 "全国の、まだ知られていない魅力をイベントで届ける取り組み": "Sharing the lesser-known corners of Japan through events",
 "メールでお問い合わせ": "Email us",
-"© 2026 AgriCamp　／　このページの絵は、写真ではなくコードで描いています。": "© 2026 AgriCamp  /  The artwork on this page is drawn in code, not photographed."
+"© 2026 AgriCamp　／　このページの絵は、写真ではなくコードで描いています。": "© 2026 AgriCamp  /  The artwork on this page is drawn in code, not photographed.",
+"組の人数と飲みもので変わります。ピクニック用具の貸出、飲みもの、軽食つき（内訳は「参加費」をご覧ください）": "The price depends on your group size and your drink. Includes picnic kit hire, a drink and light food (see Price for the breakdown)",
+"ピクニック用具の貸出、飲みもの、軽食こみ": "Picnic kit hire, a drink and light food included",
+"組の人数": "Group size",
+"ワイン": "Wine",
+"2名": "2 people",
+"3名": "3 people",
+"4名": "4 people",
+"金額はすべて1人あたりです。人数が多いほど、1人あたりは安くなります。ぶどうジュースを選ぶ方は、そこから300円引きです。": "All prices are per person. The larger your group, the less each person pays. Anyone choosing grape juice pays 300 yen less again.",
+"たとえば4名の組で全員ワインなら、1組あわせて ¥16,400 です。": "For example, a group of four all drinking wine pays 16,400 yen in total.",
+"人数と飲みもので変わります": "Varies by group size and drink"
 };
   const TITLE_EN = "Akipic | A one-night picnic in Akiruno", DESC_EN = "Akipic - a one-night picnic in Akiruno. Akiruno wine and a sky full of stars, on the grass. Saturday 14 November 2026, 16:30-20:00, Akiruno Park Lawn Square, Tokyo. Hosted by AgriCamp.";
   const qs = new URLSearchParams(location.search);
