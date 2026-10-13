@@ -410,8 +410,8 @@
   .incl-ttl{ margin:clamp(40px,5vw,64px) 0 1.4rem; text-align:center; font-family:var(--mincho); font-size:1rem; letter-spacing:.2em; color:var(--navy-900) }
   /* 品数が変わっても中央にそろうように */
   .incl{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; justify-content:center;
-         gap:clamp(10px,1.4vw,18px) }
-  .incl li{ flex:1 1 168px; max-width:250px }
+         gap:clamp(8px,1vw,16px) }
+  .incl li{ flex:1 1 140px; max-width:250px }
   @media (max-width:520px){ .incl{ gap:10px } .incl li{ flex:1 1 140px } }
   .incl-sub{ display:flex; align-items:center; justify-content:center; gap:.9rem; margin:clamp(28px,3vw,40px) 0 1rem;
              font-family:var(--mincho); font-size:.95rem; letter-spacing:.18em; color:var(--navy-900) }
@@ -475,7 +475,7 @@
   .route .note{ margin-top:.25rem }
 
   /* ================= 雨の日（STEP） ================= */
-  .steps{ list-style:none; margin:0; padding:0; display:grid; gap:clamp(14px,2vw,28px); grid-template-columns:repeat(3,minmax(0,1fr)); counter-reset:s }
+  .steps{ list-style:none; margin:0; padding:0; display:grid; gap:clamp(14px,2vw,28px); grid-template-columns:repeat(2,minmax(0,1fr)); counter-reset:s }
   @media (max-width:760px){ .steps{ grid-template-columns:1fr; gap:44px } }
   .steps li{ position:relative; padding:2.4rem 1.4rem 1.6rem; text-align:center; background:var(--paper); border:1px solid var(--rule); border-radius:4px }
   .steps li:not(:last-child)::after{ content:""; position:absolute; top:50%; right:calc(clamp(14px,2vw,28px) / -2 - 7px); z-index:1;
