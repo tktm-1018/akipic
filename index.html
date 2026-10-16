@@ -611,6 +611,26 @@
   .foot h4{ margin:0 0 .4rem; font-family:var(--serif-en); font-weight:600; font-size:.75rem; letter-spacing:.3em; color:var(--gold-lt) }
   .foot p{ margin:0; font-size:.8125rem; line-height:1.9 }
   .foot a{ color:var(--moon) }
+  /* 特定商取引法に基づく表記 */
+  .legal{ margin-top:2rem; padding-top:1.4rem; border-top:1px solid var(--hair) }
+  .legal > summary{ display:inline-flex; align-items:center; gap:.5rem; cursor:pointer; list-style:none;
+    font-size:.8125rem; letter-spacing:.1em; color:var(--moon) }
+  .legal > summary::-webkit-details-marker{ display:none }
+  .legal > summary::after{ content:""; width:.4rem; height:.4rem; border-right:1px solid var(--gold-lt);
+    border-bottom:1px solid var(--gold-lt); transform:translateY(-25%); rotate:45deg; transition:transform .25s var(--ease) }
+  .legal[open] > summary::after{ transform:translateY(25%) rotate(180deg) }
+  @media (hover:hover){ .legal > summary:hover{ color:var(--gold-lt) } }
+  .legal__body{ display:grid; grid-template-columns:10rem 1fr; gap:0 1.4rem; margin:1.2rem 0 0; font-size:.8125rem; line-height:1.9 }
+  .legal__body dt, .legal__body dd{ margin:0; padding:.6rem 0; border-top:1px solid var(--hair) }
+  .legal__body dt{ color:var(--gold-pale); letter-spacing:.08em }
+  .legal__body dd{ color:var(--moon-sub) }
+  .legal__body dd a{ color:var(--moon) }
+  .legal__body .note{ display:block; font-size:.75rem; color:var(--moon-sub) }
+  @media (max-width:600px){
+    .legal__body{ grid-template-columns:1fr; gap:0 }
+    .legal__body dt{ padding-bottom:0 } .legal__body dd{ border-top:0; padding-top:.1rem }
+  }
+
   .horizon{ position:relative; height:clamp(8rem,5rem + 12vw,13rem); margin-top:-1rem;
     -webkit-mask-image:linear-gradient(to top,#000 45%,transparent); mask-image:linear-gradient(to top,#000 45%,transparent) }
   .copy{ position:relative; z-index:1; margin:0; padding:1rem var(--sp-gutter) calc(1rem + var(--cta-h)); text-align:center;
@@ -1195,6 +1215,23 @@
       <div><h4>VENUE</h4><p>都立秋留台公園 芝生広場<br>東京都あきる野市二宮673-1</p></div>
       <div><h4>CONTACT</h4><p><a href="mailto:agricamp10@gmail.com?subject=%E3%81%82%E3%81%8D%E3%83%94%E3%82%AF%20%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">メールでお問い合わせ</a></p></div>
     </div>
+
+    <details class="legal">
+      <summary>特定商取引法に基づく表記</summary>
+      <dl class="legal__body">
+        <dt>販売事業者</dt><dd>株式会社フェルンウェイ</dd>
+        <dt>運営統括責任者</dt><dd>桑原 稜知</dd>
+        <dt>所在地</dt><dd>請求があったときは、遅滞なく開示します</dd>
+        <dt>電話番号</dt><dd><a href="tel:+818044462010">080-4446-2010</a><br><span class="note">お電話がつながらないことがあります。メールでいただけると確実です</span></dd>
+        <dt>メールアドレス</dt><dd><a href="mailto:agricamp10@gmail.com">agricamp10@gmail.com</a></dd>
+        <dt>販売価格</dt><dd>1人 3,800円〜4,500円（税込）<br><span class="note">組の人数と飲みもので変わります。内訳は「参加費」をご覧ください</span></dd>
+        <dt>商品代金以外の必要料金</dt><dd>会場までの交通費／追加のワイン1本 4,000円（税込・希望される方のみ）</dd>
+        <dt>お支払い方法</dt><dd>Peatix のお申し込みページに表示される決済方法</dd>
+        <dt>お支払い時期</dt><dd>お申し込みのとき（前払い）</dd>
+        <dt>サービスの提供時期</dt><dd>2026年11月14日（土）16:30〜20:00<br><span class="note">雨天のときは11月15日（日）に順延します</span></dd>
+        <dt>キャンセル・返金</dt><dd>両日とも雨で中止のときは全額、開催中に中止したときはバスケットのお渡し前なら全額・お渡し後なら参加費の2割をお返しします。お客様のご都合によるキャンセル、順延日にお越しになれない場合の返金は承っておりません</dd>
+      </dl>
+    </details>
   </div>
   <div class="horizon" aria-hidden="true">
     <div class="u-aurora" data-aurora data-bar-count="32" data-speed="0.3" data-gap="4" data-blur="16"
@@ -1424,7 +1461,31 @@
 "追加のボトルは1本4,000円。Peatixでの事前申込のほか、当日も会場で数量限定で販売します": "Extra bottles are 4,000 yen each - order in advance on Peatix, or buy one on the night while stocks last",
 "事前予約制です。予約は Peatix で受け付けます。": "Booking is required, through Peatix.",
 "金額はすべて1人あたりです。人数が多いほど、1人あたりは安くなります。ぶどうジュースを選ぶ方は、お一人300円を当日会場で現金にてお返しします（お申し込み時はワインの金額でお支払いください）。": "All prices are per person. The larger your group, the less each person pays. Anyone choosing grape juice is given 300 yen back in cash on the night (you pay the wine price when you book).",
-"表のぶどうジュースの金額は、当日の返金をふくめた実質のお支払い額です。": "The grape juice column shows what you actually pay once that cash is returned."
+"表のぶどうジュースの金額は、当日の返金をふくめた実質のお支払い額です。": "The grape juice column shows what you actually pay once that cash is returned.",
+"特定商取引法に基づく表記": "Legal notice (Specified Commercial Transactions Act)",
+"販売事業者": "Seller",
+"株式会社フェルンウェイ": "Fernweh Inc.",
+"運営統括責任者": "Responsible manager",
+"桑原 稜知": "Takatomo Kuwabara",
+"所在地": "Address",
+"請求があったときは、遅滞なく開示します": "Disclosed without delay on request",
+"電話番号": "Phone",
+"お電話がつながらないことがあります。メールでいただけると確実です": "We may not always be able to answer the phone; email reaches us more reliably",
+"メールアドレス": "Email",
+"販売価格": "Price",
+"1人 3,800円〜4,500円（税込）": "3,800-4,500 yen per person (tax included)",
+"組の人数と飲みもので変わります。内訳は「参加費」をご覧ください": "It depends on your group size and your drink; see Price for the breakdown",
+"商品代金以外の必要料金": "Other costs",
+"会場までの交通費／追加のワイン1本 4,000円（税込・希望される方のみ）": "Travel to the venue; an extra bottle of wine is 4,000 yen (tax included, optional)",
+"お支払い方法": "Payment methods",
+"Peatix のお申し込みページに表示される決済方法": "The payment methods shown on the Peatix booking page",
+"お支払い時期": "Payment timing",
+"お申し込みのとき（前払い）": "At the time of booking (in advance)",
+"サービスの提供時期": "Date of service",
+"2026年11月14日（土）16:30〜20:00": "Saturday 14 November 2026, 16:30-20:00",
+"雨天のときは11月15日（日）に順延します": "Postponed to Sunday 15 November if it rains",
+"キャンセル・返金": "Cancellation and refunds",
+"両日とも雨で中止のときは全額、開催中に中止したときはバスケットのお渡し前なら全額・お渡し後なら参加費の2割をお返しします。お客様のご都合によるキャンセル、順延日にお越しになれない場合の返金は承っておりません": "If both dates are rained off we refund in full. If the evening is called off partway through, we refund in full before your basket is handed over, or 20% of the fee once it has been. We do not refund cancellations by the customer, or an inability to attend on the backup date."
 };
   const TITLE_EN = "Akipic | A one-night picnic in Akiruno", DESC_EN = "Akipic - a one-night picnic in Akiruno. Akiruno wine and a sky full of stars, on the grass. Saturday 14 November 2026, 16:30-20:00, Akiruno Park Lawn Square, Tokyo. Hosted by AgriCamp.";
   const qs = new URLSearchParams(location.search);
