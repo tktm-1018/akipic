@@ -163,12 +163,17 @@
   .nav__cta:hover{ transform:translateY(-1px); box-shadow:0 10px 26px -8px rgba(220,187,116,.85) }
   .head-cta{ display:none }
   /* 言語切り替え */
-  .lang{ display:inline-flex; align-items:center; margin:0; border:1px solid rgba(220,187,116,.45); border-radius:999px; overflow:hidden }
+  .lang{ flex-shrink:0; display:inline-flex; align-items:center; margin:0; border:1px solid rgba(220,187,116,.45); border-radius:999px; overflow:hidden }
+  .lang__ab{ display:none }
   .lang a{ white-space:nowrap; padding:.35rem .8rem; font-family:var(--serif-en); font-size:.75rem; font-weight:600; letter-spacing:.1em;
     color:var(--moon-sub); text-decoration:none; transition:background-color .2s, color .2s }
   .lang a[aria-current="true"]{ background:rgba(220,187,116,.9); color:var(--navy-900) }
   .lang a:not([aria-current="true"]):hover{ color:var(--gold-lt) }
-  @media (max-width:960px){ .lang{ order:-1; margin-left:auto; margin-right:.6rem } .lang a{ padding:.3rem .6rem; font-size:.7rem } }
+  @media (max-width:960px){
+    .lang{ order:-1; margin-left:auto; margin-right:.5rem }
+    .lang a{ padding:.32rem .55rem; font-size:.72rem; letter-spacing:.06em }
+    .lang__full{ display:none } .lang__ab{ display:inline }
+  }
   .nav-toggle{ display:none; position:relative; z-index:2; width:48px; height:48px; padding:0; border:0;
     background:none; cursor:pointer; align-items:center; justify-content:center; flex-direction:column; gap:.3rem; color:var(--moon) }
   .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{ content:""; position:absolute;
@@ -448,11 +453,13 @@
     .allergen > summary:hover::after{ border-color:var(--gold-pale) } }
   .allergen__body{ margin-top:1.4rem; padding:clamp(20px,3vw,32px); background:var(--paper); border:1px solid var(--rule) }
   .allergen__body .note{ margin:0 0 1rem } .allergen__body .note:last-child{ margin:1rem 0 0 }
-  .allergen__scroll{ overflow-x:auto }
-  .alg{ width:100%; border-collapse:collapse; font-size:.875rem; white-space:nowrap }
+  .allergen__scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch }
+  .scroll-hint{ display:none }
+  @media (max-width:700px){ .scroll-hint{ display:block; margin:.6rem 0 0 } }
+  .alg{ width:100%; min-width:34rem; border-collapse:collapse; font-size:.875rem; white-space:nowrap }
   .alg th, .alg td{ padding:.7rem 1rem; border-bottom:1px solid var(--rule); text-align:left }
-  .alg thead th{ font-family:var(--mincho); font-size:.8125rem; letter-spacing:.1em; color:var(--bdx); white-space:normal }
-  .alg tbody th{ font-weight:600; white-space:normal }
+  .alg thead th{ font-family:var(--mincho); font-size:.8125rem; letter-spacing:.1em; color:var(--bdx) }
+  .alg tbody th{ font-weight:600 }
   .alg td{ color:var(--ink-sub) }
 
   /* ================= アクセス ================= */
@@ -752,7 +759,7 @@
       <a href="#faq"><span class="en">FAQ</span><small>よくある質問</small></a>
       <a class="nav__cta" href="#apply">ご予約の案内</a>
     </nav>
-    <p class="lang" aria-label="Language"><a href="?lang=ja" data-lang="ja" hreflang="ja">日本語</a><a href="?lang=en" data-lang="en" hreflang="en">English</a></p>
+    <p class="lang" aria-label="Language"><a href="?lang=ja" data-lang="ja" hreflang="ja"><span class="lang__full">日本語</span><span class="lang__ab" aria-hidden="true">JA</span></a><a href="?lang=en" data-lang="en" hreflang="en"><span class="lang__full">English</span><span class="lang__ab" aria-hidden="true">EN</span></a></p>
     <a class="head-cta" href="#apply">ご予約</a>
     <button class="nav-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="メニューを開く"><span></span><i aria-hidden="true">MENU</i></button>
   </div>
@@ -1010,6 +1017,7 @@
             </tbody>
           </table>
         </div>
+        <p class="note scroll-hint">表は横にスクロールできます</p>
         <p class="note">※ 同じ調理場で、ほかの原材料を扱う場合があります。</p>
       </div>
     </details>
@@ -1178,7 +1186,8 @@
       <div class="blur-fade">
         <p>事前予約制です。予約は Peatix で受け付けます。<br>先着20組（1組2〜4名）。受付の開始は、このページの上部でお知らせします。</p>
         <!-- 受付が始まったら、下の span を次に置き換える：
-             <p class="apply-btn"><a class="btn btn--gold" href="（Peatix のイベントURL）" target="_blank" rel="noopener">Peatix で予約する</a></p> -->
+             <p class="apply-btn"><a class="btn btn--gold" href="https://akipiku.peatix.com" target="_blank" rel="noopener">Peatix で予約する</a></p>
+             あわせて、お知らせバーのリンク（#apply）も https://akipiku.peatix.com に差し替える -->
         <span class="soon" aria-disabled="true">受付開始までお待ちください</span>
                 <div class="contact">
           <h3>お問い合わせ</h3>
@@ -1226,7 +1235,7 @@
         <dt>メールアドレス</dt><dd><a href="mailto:agricamp10@gmail.com">agricamp10@gmail.com</a></dd>
         <dt>販売価格</dt><dd>1人 3,800円〜4,500円（税込）<br><span class="note">組の人数と飲みもので変わります。内訳は「参加費」をご覧ください</span></dd>
         <dt>商品代金以外の必要料金</dt><dd>会場までの交通費／追加のワイン1本 4,000円（税込・希望される方のみ）</dd>
-        <dt>お支払い方法</dt><dd>Peatix のお申し込みページに表示される決済方法</dd>
+        <dt>お支払い方法</dt><dd>クレジットカード（VISA／Mastercard／JCB／American Express／Discover／Diners Club）、銀行振込<br><span class="note">Peatix のお申し込みページでお選びいただけます</span></dd>
         <dt>お支払い時期</dt><dd>お申し込みのとき（前払い）</dd>
         <dt>サービスの提供時期</dt><dd>2026年11月14日（土）16:30〜20:00<br><span class="note">雨天のときは11月15日（日）に順延します</span></dd>
         <dt>キャンセル・返金</dt><dd>両日とも雨で中止のときは全額、開催中に中止したときはバスケットのお渡し前なら全額・お渡し後なら参加費の2割をお返しします。お客様のご都合によるキャンセル、順延日にお越しになれない場合の返金は承っておりません</dd>
@@ -1477,7 +1486,6 @@
 "商品代金以外の必要料金": "Other costs",
 "会場までの交通費／追加のワイン1本 4,000円（税込・希望される方のみ）": "Travel to the venue; an extra bottle of wine is 4,000 yen (tax included, optional)",
 "お支払い方法": "Payment methods",
-"Peatix のお申し込みページに表示される決済方法": "The payment methods shown on the Peatix booking page",
 "お支払い時期": "Payment timing",
 "お申し込みのとき（前払い）": "At the time of booking (in advance)",
 "サービスの提供時期": "Date of service",
@@ -1485,7 +1493,10 @@
 "雨天のときは11月15日（日）に順延します": "Postponed to Sunday 15 November if it rains",
 "キャンセル・返金": "Cancellation and refunds",
 "両日とも雨で中止のときは全額、開催中に中止したときはバスケットのお渡し前なら全額・お渡し後なら参加費の2割をお返しします。お客様のご都合によるキャンセル、順延日にお越しになれない場合の返金は承っておりません": "If both dates are rained off we refund in full. If the evening is called off partway through, we refund in full before your basket is handed over, or 20% of the fee once it has been. We do not refund cancellations by the customer, or an inability to attend on the backup date.",
-"〒168-0074 東京都杉並区上高井戸1-3-23": "1-3-23 Kamitakaido, Suginami-ku, Tokyo 168-0074, Japan"
+"〒168-0074 東京都杉並区上高井戸1-3-23": "1-3-23 Kamitakaido, Suginami-ku, Tokyo 168-0074, Japan",
+"クレジットカード（VISA／Mastercard／JCB／American Express／Discover／Diners Club）、銀行振込": "Credit card (VISA, Mastercard, JCB, American Express, Discover, Diners Club) or bank transfer",
+"Peatix のお申し込みページでお選びいただけます": "You choose on the Peatix booking page",
+"表は横にスクロールできます": "Scroll the table sideways to see it all"
 };
   const TITLE_EN = "Akipic | A one-night picnic in Akiruno", DESC_EN = "Akipic - a one-night picnic in Akiruno. Akiruno wine and a sky full of stars, on the grass. Saturday 14 November 2026, 16:30-20:00, Akiruno Park Lawn Square, Tokyo. Hosted by AgriCamp.";
   const qs = new URLSearchParams(location.search);
