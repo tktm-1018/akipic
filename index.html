@@ -28,7 +28,7 @@
     "address":{"@type":"PostalAddress","streetAddress":"二宮673-1","addressLocality":"あきる野市","addressRegion":"東京都","postalCode":"197-0814","addressCountry":"JP"}},
   "maximumAttendeeCapacity":20,
   "organizer":{"@type":"Organization","name":"AgriCamp","email":"agricamp10@gmail.com"},
-  "offers":{"@type":"AggregateOffer","lowPrice":"3800","highPrice":"4500","priceCurrency":"JPY","availability":"https://schema.org/PreOrder"}
+  "offers":{"@type":"AggregateOffer","lowPrice":"3800","highPrice":"4500","priceCurrency":"JPY","availability":"https://schema.org/InStock","url":"https://akipiku.peatix.com","validThrough":"2026-10-31T23:59+09:00"}
 }
 </script>
 <!-- 順延したときの直し方：eventStatus を "https://schema.org/EventRescheduled" にし、
@@ -743,8 +743,8 @@
 
 <!-- お知らせバー：順延・中止が決まったら、この中の文面を書き換える -->
 <p class="info-bar" id="top">
-  <span><span class="dot" aria-hidden="true"></span><b>NEWS</b>　ご予約の受付は、まもなく始まります（先着20組）</span>
-  <a href="#apply">ご予約について</a>
+  <span><span class="dot" aria-hidden="true"></span><b>NEWS</b>　ご予約受付中 ── 10月31日まで・先着20組</span>
+  <a href="https://akipiku.peatix.com" target="_blank" rel="noopener">Peatix で予約する</a>
 </p>
 
 <header class="site-head">
@@ -931,7 +931,7 @@
         <dt>会場</dt><dd>都立秋留台公園 芝生広場<span class="note">東京都あきる野市二宮673-1</span></dd>
         <dt>参加費</dt><dd><b>¥3,800〜4,500</b>（1人）<span class="note">組の人数と飲みもので変わります。ピクニック用具の貸出、飲みもの、軽食つき（内訳は「参加費」をご覧ください）</span></dd>
         <dt>定員</dt><dd><b>先着20組</b>（1組2〜4名）<span class="note">事前予約制です。定員に達したあとでも、お問い合わせいただければ、運営で検討のうえご参加いただける場合があります</span></dd>
-        <dt>ご予約</dt><dd>Peatix で受け付けます<span class="note">受付の開始は、このページでお知らせします</span></dd>
+        <dt>ご予約</dt><dd>Peatix で受け付けています<span class="note">受付は10月31日まで</span></dd>
         <dt>主催</dt><dd>AgriCamp</dd>
       </dl>
     </div>
@@ -1184,11 +1184,8 @@
     </header>
     <div class="reserve__grid">
       <div class="blur-fade">
-        <p>事前予約制です。予約は Peatix で受け付けます。<br>先着20組（1組2〜4名）。受付の開始は、このページの上部でお知らせします。</p>
-        <!-- 受付が始まったら、下の span を次に置き換える：
-             <p class="apply-btn"><a class="btn btn--gold" href="https://akipiku.peatix.com" target="_blank" rel="noopener">Peatix で予約する</a></p>
-             あわせて、お知らせバーのリンク（#apply）も https://akipiku.peatix.com に差し替える -->
-        <span class="soon" aria-disabled="true">受付開始までお待ちください</span>
+        <p>事前予約制です。予約は Peatix で受け付けています。<br>受付は<b>10月31日まで</b>、先着20組（1組2〜4名）です。</p>
+        <p class="apply-btn"><a class="btn btn--gold" href="https://akipiku.peatix.com" target="_blank" rel="noopener">Peatix で予約する</a></p>
                 <div class="contact">
           <h3>お問い合わせ</h3>
           <p><a href="mailto:agricamp10@gmail.com?subject=%E3%81%82%E3%81%8D%E3%83%94%E3%82%AF%20%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B">agricamp10@gmail.com</a></p>
@@ -1258,8 +1255,6 @@
   "use strict";
   const EN = {
 "本文へスキップ": "Skip to content",
-"ご予約の受付は、まもなく始まります（先着20組）": "Bookings open soon (first 20 groups)",
-"ご予約について": "About booking",
 "地域の魅力を、イベントで届ける": "Sharing local treasures through events",
 "この夜について": "the night",
 "当日の流れ": "on the day",
@@ -1298,7 +1293,6 @@
 "先着20組": "First 20 groups",
 "（1組2〜4名）": " (2-4 people per group)",
 "事前予約制です。定員に達したあとでも、お問い合わせいただければ、運営で検討のうえご参加いただける場合があります": "Booking is required. Even once we are full, please get in touch - we may still be able to make room for you",
-"受付の開始は、このページでお知らせします": "We will announce the opening of bookings on this page",
 "主催": "Host",
 "進行も、集合の時刻もありません。3時間半のあいだに、夕方が夜へ変わっていきます。": "There is no programme and no meeting time. Over three and a half hours, evening turns into night.",
 "開場・空が色づきはじめる": "Doors open - the sky begins to change colour",
@@ -1443,8 +1437,6 @@
 "AgriCamp は、まだ十分に発信されていない各地の魅力を、イベントを通じて届ける取り組みです。あきる野にかぎらず、全国の土地の自然や食、そこで暮らす人の営みを、実際に訪れて体験できる場をつくっています。": "AgriCamp exists to share the parts of Japan that are not yet well known, through events. Not only Akiruno: we create places where you can go and experience the landscape, the food and the daily life of regions across the country.",
 "今回の舞台は、東京・あきる野。都心から電車で来られる距離に、広い空と地元のワインがある。その両方を、いちばん静かな時間に味わってほしくて、この夜を企画しました。": "This time the setting is Akiruno in Tokyo. Within reach of the city by train there is a wide open sky and wine made nearby. We planned this evening so that you can have both, at the quietest hour of the day.",
 "都立秋留台公園の許可を得て開催します。": "Held with the permission of Akiruno Park.",
-"先着20組（1組2〜4名）。受付の開始は、このページの上部でお知らせします。": "The first 20 groups (2-4 people per group). We will announce the opening of bookings at the top of this page.",
-"受付開始までお待ちください": "Bookings not open yet",
 "お問い合わせ": "Contact",
 "数日以内にご返信します。Instagram": "We reply within a few days. You can also reach us on Instagram",
 "からもご連絡いただけます。": ".",
@@ -1464,11 +1456,9 @@
 "4名": "4 people",
 "たとえば4名の組で全員ワインなら、1組あわせて ¥16,400 です。": "For example, a group of four all drinking wine pays 16,400 yen in total.",
 "人数と飲みもので変わります": "Varies by group size and drink",
-"Peatix で受け付けます": "Through Peatix",
 "1組につきボトル1本（750ml）": "one 750ml bottle per group",
 "ぶどうジュース（1人1本・180ml瓶）をご用意します": "we have grape juice (one 180ml bottle each)",
 "追加のボトルは1本4,000円。Peatixでの事前申込のほか、当日も会場で数量限定で販売します": "Extra bottles are 4,000 yen each - order in advance on Peatix, or buy one on the night while stocks last",
-"事前予約制です。予約は Peatix で受け付けます。": "Booking is required, through Peatix.",
 "金額はすべて1人あたりです。人数が多いほど、1人あたりは安くなります。ぶどうジュースを選ぶ方は、お一人300円を当日会場で現金にてお返しします（お申し込み時はワインの金額でお支払いください）。": "All prices are per person. The larger your group, the less each person pays. Anyone choosing grape juice is given 300 yen back in cash on the night (you pay the wine price when you book).",
 "表のぶどうジュースの金額は、当日の返金をふくめた実質のお支払い額です。": "The grape juice column shows what you actually pay once that cash is returned.",
 "特定商取引法に基づく表記": "Legal notice (Specified Commercial Transactions Act)",
@@ -1496,7 +1486,15 @@
 "〒168-0074 東京都杉並区上高井戸1-3-23": "1-3-23 Kamitakaido, Suginami-ku, Tokyo 168-0074, Japan",
 "クレジットカード（VISA／Mastercard／JCB／American Express／Discover／Diners Club）、銀行振込": "Credit card (VISA, Mastercard, JCB, American Express, Discover, Diners Club) or bank transfer",
 "Peatix のお申し込みページでお選びいただけます": "You choose on the Peatix booking page",
-"表は横にスクロールできます": "Scroll the table sideways to see it all"
+"表は横にスクロールできます": "Scroll the table sideways to see it all",
+"ご予約受付中 ── 10月31日まで・先着20組": "Bookings open - until 31 October, first 20 groups",
+"Peatix で予約する": "Book on Peatix",
+"Peatix で受け付けています": "Through Peatix",
+"受付は10月31日まで": "Bookings close on 31 October",
+"事前予約制です。予約は Peatix で受け付けています。": "Booking is required, through Peatix.",
+"受付は": "Bookings close on ",
+"10月31日まで": "31 October",
+"、先着20組（1組2〜4名）です。": "; the first 20 groups (2-4 people per group)."
 };
   const TITLE_EN = "Akipic | A one-night picnic in Akiruno", DESC_EN = "Akipic - a one-night picnic in Akiruno. Akiruno wine and a sky full of stars, on the grass. Saturday 14 November 2026, 16:30-20:00, Akiruno Park Lawn Square, Tokyo. Hosted by AgriCamp.";
   const qs = new URLSearchParams(location.search);
