@@ -482,7 +482,7 @@
   .route .note{ margin-top:.25rem }
 
   /* ================= 雨の日（STEP） ================= */
-  .steps{ list-style:none; margin:0; padding:0; display:grid; gap:clamp(14px,2vw,28px); grid-template-columns:repeat(2,minmax(0,1fr)); counter-reset:s }
+  .steps{ list-style:none; margin:0; padding:0; display:grid; gap:clamp(14px,2vw,28px); grid-template-columns:repeat(3,minmax(0,1fr)); counter-reset:s }
   @media (max-width:760px){ .steps{ grid-template-columns:1fr; gap:44px } }
   .steps li{ position:relative; padding:2.4rem 1.4rem 1.6rem; text-align:center; background:var(--paper); border:1px solid var(--rule); border-radius:4px }
   .steps li:not(:last-child)::after{ content:""; position:absolute; top:50%; right:calc(clamp(14px,2vw,28px) / -2 - 7px); z-index:1;
@@ -859,7 +859,7 @@
     <div class="orn fbr" style="--delay:300ms" aria-hidden="true"><i></i></div>
     <p class="lead fbr" style="--delay:380ms"><span class="nw">芝生の上で、</span><span class="nw">あきる野のワインと星を。</span></p>
     <p class="hero-date fbr" style="--delay:480ms"><span>2026.11.14<small>SAT</small></span><i class="sep" aria-hidden="true"></i><span>16:30 – 20:00</span></p>
-    <p class="hero-place fbr" style="--delay:560ms">都立秋留台公園 芝生広場（東京・あきる野）<br><span>雨天順延 ── 予備日 11.15（日）</span></p>
+    <p class="hero-place fbr" style="--delay:560ms">都立秋留台公園 芝生広場（東京・あきる野）<br><span>雨天順延 ── 予備日 11.15（日）／11.22（日）</span></p>
     <p class="hero-btns fbr" style="--delay:660ms">
       <a class="btn btn--gold" href="#apply">ご予約の案内</a>
       <a class="btn btn--line" href="#about">この夜について</a>
@@ -926,7 +926,7 @@
     </header>
     <div class="frame spec blur-fade">
       <dl>
-        <dt>日程</dt><dd><b>2026.11.14</b>（土）<span class="note">雨のときは予備日 11月15日（日）に順延</span></dd>
+        <dt>日程</dt><dd><b>2026.11.14</b>（土）<span class="note">雨のときは予備日 11月15日（日）→ 11月22日（日）に順延</span></dd>
         <dt>時間</dt><dd><b>16:30 – 20:00</b><span class="note">この時間内なら、来る時間・帰る時間は自由です</span></dd>
         <dt>会場</dt><dd>都立秋留台公園 芝生広場<span class="note">東京都あきる野市二宮673-1</span></dd>
         <dt>参加費</dt><dd><b>¥3,800〜4,500</b>（1人）<span class="note">組の人数と飲みもので変わります。ピクニック用具の貸出、飲みもの、軽食つき（内訳は「参加費」をご覧ください）</span></dd>
@@ -1068,7 +1068,8 @@
     </header>
     <ol class="steps blur-fade" aria-label="雨天時の順延の流れ">
       <li class="is-main"><span class="steps__no">STEP 01</span><b>11.14<small>SAT</small></b><em>本番</em><p>降水確率が50％以上なら、前日18時までに順延をお知らせします</p></li>
-      <li><span class="steps__no">STEP 02</span><b>11.15<small>SUN</small></b><em>予備日</em><p>11月14日が雨のとき。この日も雨なら中止し、全額をお返しします</p></li>
+      <li><span class="steps__no">STEP 02</span><b>11.15<small>SUN</small></b><em>予備日 1</em><p>11月14日が雨のとき</p></li>
+      <li><span class="steps__no">STEP 03</span><b>11.22<small>SUN</small></b><em>予備日 2</em><p>11月15日も雨のとき。この日も雨なら中止し、全額をお返しします</p></li>
     </ol>
     <div class="rain-info">
       <div class="capbox blur-fade">
@@ -1082,7 +1083,7 @@
       <div class="capbox blur-fade">
         <p class="capbox__ttl">キャンセルと返金</p>
         <dl>
-          <dt>両日とも雨<br>（中止）</dt><dd><b>全額をお返しします</b></dd>
+          <dt>3日とも雨<br>（中止）</dt><dd><b>全額をお返しします</b></dd>
           <dt>途中で中止<br>になったとき</dt><dd>バスケットをお渡しする前なら<b>全額</b>、お渡ししたあとなら<b>2割</b>をお返しします</dd>
           <dt>ご都合による<br>キャンセル</dt><dd>返金はいたしません</dd>
           <dt>順延日に<br>行けないとき</dt><dd>返金はいたしません</dd>
@@ -1137,7 +1138,7 @@
       <details><summary>途中で帰れますか？</summary>
         <div class="acc__panel"><div class="acc__body"><span class="qa-a" aria-hidden="true"></span><p>はい。16:30〜20:00 のあいだなら、いつ来て、いつ帰ってもかまいません。用具は公園内でスタッフに返してください。</p></div></div></details>
       <details><summary>雨が降ったらどうなりますか？</summary>
-        <div class="acc__panel"><div class="acc__body"><span class="qa-a" aria-hidden="true"></span><p>当日の降水確率が50％以上なら、11月15日（日）に順延します。前日18時の気象庁の予報（あきる野市）で判断し、同じ時刻までにこのページの上部とPeatixでお知らせします。15日も雨のときは中止し、参加費は全額をお返しします。</p></div></div></details>
+        <div class="acc__panel"><div class="acc__body"><span class="qa-a" aria-hidden="true"></span><p>当日の降水確率が50％以上なら、11月15日（日）に順延します。前日18時の気象庁の予報（あきる野市）で判断し、同じ時刻までにこのページの上部とPeatixでお知らせします。15日も雨のときは11月22日（日）へ、それも雨のときは中止し、参加費は全額をお返しします。</p></div></div></details>
       <details><summary>車で行けますか？</summary>
         <div class="acc__panel"><div class="acc__body"><span class="qa-a" aria-hidden="true"></span><p>公園の駐車場は夕方に閉まり、終了時には出庫できません。お酒もお出しするため、電車かバスでお越しください。お車の場合は、近隣の別の駐車場をご利用ください。</p></div></div></details>
       <details><summary>曇りの日はどうなりますか？</summary>
@@ -1195,7 +1196,7 @@
       <aside class="ticket blur-fade" aria-label="開催の要点">
         <p class="ticket__head"><span class="en">NIGHT PICNIC TICKET</span><b>あきピク</b></p>
         <dl>
-          <dt>日付</dt><dd><span class="en">2026.11.14</span> 土<br><span class="note">予備日 11.15</span></dd>
+          <dt>日付</dt><dd><span class="en">2026.11.14</span> 土<br><span class="note">予備日 11.15／11.22</span></dd>
           <dt>時間</dt><dd><span class="en">16:30 – 20:00</span></dd>
           <dt>会場</dt><dd>都立秋留台公園 芝生広場</dd>
           <dt>参加費</dt><dd><span class="en">¥3,800〜4,500</span> ／1人<br><span class="note">人数と飲みもので変わります</span></dd>
@@ -1234,8 +1235,8 @@
         <dt>商品代金以外の必要料金</dt><dd>会場までの交通費／追加のワイン1本 4,000円（税込・希望される方のみ）</dd>
         <dt>お支払い方法</dt><dd>クレジットカード（VISA／Mastercard／JCB／American Express／Discover／Diners Club）、銀行振込<br><span class="note">Peatix のお申し込みページでお選びいただけます</span></dd>
         <dt>お支払い時期</dt><dd>お申し込みのとき（前払い）</dd>
-        <dt>サービスの提供時期</dt><dd>2026年11月14日（土）16:30〜20:00<br><span class="note">雨天のときは11月15日（日）に順延します</span></dd>
-        <dt>キャンセル・返金</dt><dd>両日とも雨で中止のときは全額、開催中に中止したときはバスケットのお渡し前なら全額・お渡し後なら参加費の2割をお返しします。お客様のご都合によるキャンセル、順延日にお越しになれない場合の返金は承っておりません</dd>
+        <dt>サービスの提供時期</dt><dd>2026年11月14日（土）16:30〜20:00<br><span class="note">雨天のときは11月15日（日）→11月22日（日）に順延します</span></dd>
+        <dt>キャンセル・返金</dt><dd>予備日も雨で中止のときは全額、開催中に中止したときはバスケットのお渡し前なら全額・お渡し後なら参加費の2割をお返しします。お客様のご都合によるキャンセル、順延日にお越しになれない場合の返金は承っておりません</dd>
       </dl>
     </details>
   </div>
@@ -1268,7 +1269,6 @@
 "芝生の上で、": "On the grass, ",
 "あきる野のワインと星を。": "Akiruno wine and a sky full of stars.",
 "都立秋留台公園 芝生広場（東京・あきる野）": "Akiruno Park Lawn Square (Akiruno, Tokyo)",
-"雨天順延 ── 予備日 11.15（日）": "Postponed if it rains - backup date Nov 15 (Sun)",
 "音楽は、流しません。": "We play no music.",
 "灯りは、": "The only light is ",
 "手元のランタンと、": "a lantern at your side ",
@@ -1281,7 +1281,6 @@
 "開催概要": "Details",
 "日程": "Date",
 "（土）": " (Sat)",
-"雨のときは予備日 11月15日（日）に順延": "If it rains, postponed to the backup date, Sunday November 15",
 "時間": "Hours",
 "この時間内なら、来る時間・帰る時間は自由です": "Within these hours, you may arrive and leave whenever you like",
 "会場": "Venue",
@@ -1363,8 +1362,6 @@
 "雨の日のこと": "If it rains",
 "本番": "Main date",
 "降水確率が50％以上なら、前日18時までに順延をお知らせします": "If the chance of rain is 50% or more, we announce the postponement by 6pm the day before",
-"予備日": "Backup date",
-"11月14日が雨のとき。この日も雨なら中止し、全額をお返しします": "Used if November 14 is rained off. If this day is rained off too, we cancel and refund in full",
 "雨の判断": "How we decide",
 "判断のしかた": "The rule",
 "当日の降水確率が": "If the chance of rain on the day is ",
@@ -1378,7 +1375,6 @@
 "前日18時までにお知らせします": "By 6pm the day before",
 "このページの上部のお知らせバーと、ご予約の方には Peatix からもご連絡します": "On the news bar at the top of this page, and by message through Peatix if you have booked",
 "キャンセルと返金": "Cancellations and refunds",
-"両日とも雨": "Both dates rained off",
 "（中止）": " (cancelled)",
 "全額をお返しします": "We refund in full",
 "途中で中止": "Called off",
@@ -1416,7 +1412,6 @@
 "途中で帰れますか？": "Can I leave early?",
 "はい。16:30〜20:00 のあいだなら、いつ来て、いつ帰ってもかまいません。用具は公園内でスタッフに返してください。": "Yes. Between 16:30 and 20:00 you may arrive and leave whenever you like. Please return your kit to our staff inside the park.",
 "雨が降ったらどうなりますか？": "What happens if it rains?",
-"当日の降水確率が50％以上なら、11月15日（日）に順延します。前日18時の気象庁の予報（あきる野市）で判断し、同じ時刻までにこのページの上部とPeatixでお知らせします。15日も雨のときは中止し、参加費は全額をお返しします。": "If the chance of rain on the day is 50% or more, we postpone to Sunday November 15. We decide from the Japan Meteorological Agency forecast for Akiruno at 6pm the day before, and tell you by that time at the top of this page and through Peatix. If the 15th is rained off too, we cancel and refund the fee in full.",
 "車で行けますか？": "Can I come by car?",
 "公園の駐車場は夕方に閉まり、終了時には出庫できません。お酒もお出しするため、電車かバスでお越しください。お車の場合は、近隣の別の駐車場をご利用ください。": "The park car park closes in the early evening, so you cannot drive out at the end. We also serve alcohol, so please come by train or bus. If you do drive, please use another car park nearby.",
 "曇りの日はどうなりますか？": "What if it is cloudy?",
@@ -1442,7 +1437,6 @@
 "からもご連絡いただけます。": ".",
 "日付": "Date",
 "土": "Sat",
-"予備日 11.15": "Backup date Nov 15",
 "あきピク〜あきる野を愉しむ一夜のピクニック〜": "Akipic - a one-night picnic in Akiruno",
 "全国の、まだ知られていない魅力をイベントで届ける取り組み": "Sharing the lesser-known corners of Japan through events",
 "メールでお問い合わせ": "Email us",
@@ -1480,9 +1474,7 @@
 "お申し込みのとき（前払い）": "At the time of booking (in advance)",
 "サービスの提供時期": "Date of service",
 "2026年11月14日（土）16:30〜20:00": "Saturday 14 November 2026, 16:30-20:00",
-"雨天のときは11月15日（日）に順延します": "Postponed to Sunday 15 November if it rains",
 "キャンセル・返金": "Cancellation and refunds",
-"両日とも雨で中止のときは全額、開催中に中止したときはバスケットのお渡し前なら全額・お渡し後なら参加費の2割をお返しします。お客様のご都合によるキャンセル、順延日にお越しになれない場合の返金は承っておりません": "If both dates are rained off we refund in full. If the evening is called off partway through, we refund in full before your basket is handed over, or 20% of the fee once it has been. We do not refund cancellations by the customer, or an inability to attend on the backup date.",
 "〒168-0074 東京都杉並区上高井戸1-3-23": "1-3-23 Kamitakaido, Suginami-ku, Tokyo 168-0074, Japan",
 "クレジットカード（VISA／Mastercard／JCB／American Express／Discover／Diners Club）、銀行振込": "Credit card (VISA, Mastercard, JCB, American Express, Discover, Diners Club) or bank transfer",
 "Peatix のお申し込みページでお選びいただけます": "You choose on the Peatix booking page",
@@ -1494,7 +1486,18 @@
 "事前予約制です。予約は Peatix で受け付けています。": "Booking is required, through Peatix.",
 "受付は": "Bookings close on ",
 "10月31日まで": "31 October",
-"、先着20組（1組2〜4名）です。": "; the first 20 groups (2-4 people per group)."
+"、先着20組（1組2〜4名）です。": "; the first 20 groups (2-4 people per group).",
+"雨天順延 ── 予備日 11.15（日）／11.22（日）": "Postponed if it rains - backup dates Nov 15 (Sun) / Nov 22 (Sun)",
+"雨のときは予備日 11月15日（日）→ 11月22日（日）に順延": "If it rains, postponed to Sunday November 15, then Sunday November 22",
+"予備日 1": "Backup date 1",
+"予備日 2": "Backup date 2",
+"11月14日が雨のとき": "Used if November 14 is rained off",
+"11月15日も雨のとき。この日も雨なら中止し、全額をお返しします": "Used if November 15 is rained off too. If this day is rained off as well, we cancel and refund in full",
+"3日とも雨": "All three dates rained off",
+"予備日 11.15／11.22": "Backup dates Nov 15 / Nov 22",
+"雨天のときは11月15日（日）→11月22日（日）に順延します": "Postponed to Sunday 15 November, then Sunday 22 November, if it rains",
+"当日の降水確率が50％以上なら、11月15日（日）に順延します。前日18時の気象庁の予報（あきる野市）で判断し、同じ時刻までにこのページの上部とPeatixでお知らせします。15日も雨のときは11月22日（日）へ、それも雨のときは中止し、参加費は全額をお返しします。": "If the chance of rain on the day is 50% or more, we postpone to Sunday November 15. We decide from the Japan Meteorological Agency forecast for Akiruno at 6pm the day before, and tell you by that time at the top of this page and through Peatix. If the 15th is rained off too we move to Sunday November 22, and if that is rained off as well we cancel and refund the fee in full.",
+"予備日も雨で中止のときは全額、開催中に中止したときはバスケットのお渡し前なら全額・お渡し後なら参加費の2割をお返しします。お客様のご都合によるキャンセル、順延日にお越しになれない場合の返金は承っておりません": "If the backup dates are rained off too we refund in full. If the evening is called off partway through, we refund in full before your basket is handed over, or 20% of the fee once it has been. We do not refund cancellations by the customer, or an inability to attend on a backup date."
 };
   const TITLE_EN = "Akipic | A one-night picnic in Akiruno", DESC_EN = "Akipic - a one-night picnic in Akiruno. Akiruno wine and a sky full of stars, on the grass. Saturday 14 November 2026, 16:30-20:00, Akiruno Park Lawn Square, Tokyo. Hosted by AgriCamp.";
   const qs = new URLSearchParams(location.search);
